@@ -16,9 +16,8 @@
 		$note = $('<em class="placeholder"/>'),
 		// Placeholder support?
 		html5_placeholder = (function( props ){
-			var input	= document.createElement('input');
 
-			if ( ! ( 'hasOwnProperty'  in input && input.hasOwnProperty( 'placeholder' ) ) )
+			if ( ! ( 'placeholder' in document.createElement('input') ) )
 			{
 				return FALSE;
 			}
