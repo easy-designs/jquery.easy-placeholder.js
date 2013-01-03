@@ -47,10 +47,23 @@
 		}
 	}
 	
+	function submitHandler(e) {
+
+		var $form = $(this);
+
+		$form.find('input[placeholder]').each(function(){
+			var $input = $(this);
+
+			if ($input.val() == $input.attr( PLACEHOLDER ) ) {
+				$input.val(EMPTY);
+			}
+		});
+		
+	}
 	// Plugin
 	$.fn.enable_placeholder = function(){
 		
-		if ( ! html5_placeholder ) 
+		if ( ! html5_placeholder )
 		{
 			$(this)
 				// no radio or checkbox; passwords handled separately
@@ -69,7 +82,9 @@
 							.text( $input.attr( PLACEHOLDER ) )
 							.appendTo( $input.parent() );
 						
-					 });
+				});
+
+				$(this).closest('form').on('submit', submitHandler);
 		}
 
 		return this;
